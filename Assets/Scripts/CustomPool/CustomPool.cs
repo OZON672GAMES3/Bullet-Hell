@@ -27,9 +27,7 @@ namespace CustomPool
             var obj = _objects.FirstOrDefault(x => !x.isActiveAndEnabled);
 
             if (!obj)
-            {
                 obj = Create();
-            }
 
             obj.gameObject.SetActive(true);
             return obj;
