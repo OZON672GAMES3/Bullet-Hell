@@ -14,6 +14,7 @@ namespace Player
         private static int _currentScore = 0;
         private static int _highScore = 0;
         private static int _maxGold = 0;
+        
         private HealthManager _healthManager;
         private ObjectPool<BonusGold> _bonusGoldPool;
         private ObjectPool<DamageMine> _damageMinePool;
@@ -44,6 +45,11 @@ namespace Player
             }
         }
 
+        public void ResetScore()
+        {
+            _currentScore = 0;
+        }
+
         private void Awake()
         {
             if (Instance == null)
@@ -59,7 +65,7 @@ namespace Player
             _damageMinePool = FindObjectOfType<MinesSpawner>()?.GetDamageMinePool();
             _bonusHealthKitPool = FindObjectOfType<HealthSpawner>()?.GetBonusHealthKitPool();
             _bonusShieldPool = FindObjectOfType<ShieldSpawner>()?.GetBonusShieldPool();
-
+            
             _highScore = PlayerPrefs.GetInt("HighScore", 0);
             InvokeRepeating(nameof(AddScore), 10, 10);
         }

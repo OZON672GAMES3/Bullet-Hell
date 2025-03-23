@@ -41,10 +41,16 @@ namespace Player
         void Movement()
         {
             float speed = _baseSpeed * _speedModifier;
-            
+
             _horizontal = Input.GetAxisRaw(Horizontal) * speed * Time.deltaTime;
             _vertical = Input.GetAxisRaw(Vertical) * speed * Time.deltaTime;
-        
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _horizontal *= 0.5f;
+                _vertical *= 0.5f;
+            }
+
             Vector3 newPosition = transform.position + new Vector3(_horizontal, _vertical, 0f);
 
             newPosition.x = Mathf.Clamp(newPosition.x, -2.7f, 3f);

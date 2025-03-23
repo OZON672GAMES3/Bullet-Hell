@@ -16,3 +16,4 @@ MonoBehaviour:
   skinSprite: {fileID: 21300000, guid: 0d331eb63fa10b54d9ca77c346743062, type: 3}
   price: 0
   isPurchased: 1
+  speedModifier: 1

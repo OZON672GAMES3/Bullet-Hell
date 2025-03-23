@@ -2,16 +2,17 @@ using UnityEngine;
 
 namespace SceneMover
 {
-    public class TileMover : MonoBehaviour
+    public class TileMover : ObjectMover
     {
-        [SerializeField] private float speed = 1.0f;
-
-        void Update()
+        protected override void Move()
         {
-            transform.position += Vector3.down * (speed * Time.deltaTime);
-            
+            transform.position += Vector3.down * (_speed * Time.deltaTime);
+        }
+
+        protected override void GetResetPosition()
+        {
             if (transform.position.y < -4.5f)
-                transform.position = new Vector3(transform.position.x, 5.5f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, _resetPositionY, transform.position.z);
         }
     }
 }

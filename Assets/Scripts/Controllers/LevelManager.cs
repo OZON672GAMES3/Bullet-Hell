@@ -1,4 +1,5 @@
 using System.Collections;
+using Player;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,9 +12,11 @@ namespace Controllers
         [SerializeField] private GameObject _looseScreen;
 
         private HealthManager _healthManager;
+        private PlayerInteractable _playerInteractable;
         
         private void Start()
         {
+            _playerInteractable = PlayerInteractable.Instance;
             _healthManager = FindObjectOfType<HealthManager>();
             Time.timeScale = 1;
         }
@@ -31,6 +34,7 @@ namespace Controllers
         {
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.buildIndex);
+            _playerInteractable.ResetScore();
         }
 
         public void MainMenu()

@@ -15,4 +15,5 @@ MonoBehaviour:
   skinID: 4
   skinSprite: {fileID: 21300000, guid: 127e5442a7f1dc5428621c7834140ee5, type: 3}
   price: 40
-  isPurchased: 0
+  isPurchased: 1
+  speedModifier: 5

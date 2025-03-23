@@ -37,7 +37,7 @@ namespace Controllers
 
         private void Gold()
         {
-            _goldValue.text = "Gold: " + PlayerPrefs.GetInt("MaxGold", 0);
+            _goldValue.text = "Gold: " + _playerInteractable.MaxGold;
         }
     }
 }
