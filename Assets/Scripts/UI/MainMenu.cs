@@ -1,4 +1,4 @@
-using Controllers;
+using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,42 +8,42 @@ namespace UI
     public class MainMenu : MonoBehaviour
     {
         [SerializeField] private GameObject _mainMenuPanel;
-        [SerializeField] private GameObject _chooseLevelPanel;
-        [SerializeField] private GameObject _skinPanel;
-        [SerializeField] private Text _goldValue;
+        [SerializeField] private GameObject _settingsPanel;
+        private Text _goldValue;
     
+        private PlayerInteractable _playerInteractable;
+        
         private void Awake()
         {
             _mainMenuPanel.SetActive(true);
-            _chooseLevelPanel.SetActive(false);
-            _skinPanel.SetActive(false);
+            _settingsPanel.SetActive(false);
         }
-        
-        public void LoadLevel(int levelIndex)
+
+        private void Start()
         {
-            if (levelIndex >= 0 && levelIndex < SceneManager.sceneCountInBuildSettings)
-                SceneManager.LoadScene(levelIndex);
+            _playerInteractable = PlayerInteractable.Instance;
         }
     
         public void Play()
         {
-            _mainMenuPanel.SetActive(false);
-            _chooseLevelPanel.SetActive(false);
-            _chooseLevelPanel.SetActive(true);
+                SceneManager.LoadScene(1);
         }
-    
+
+        public void Settings()
+        {
+            _mainMenuPanel.SetActive(false);
+            _settingsPanel.SetActive(true);
+        }
+
         public void Back()
         {
-            _chooseLevelPanel.SetActive(false);
-            _skinPanel.SetActive(false);
             _mainMenuPanel.SetActive(true);
+            _settingsPanel.SetActive(false);
         }
-    
-        public void Skin()
+
+        public void Quit()
         {
-            _mainMenuPanel.SetActive(false);
-            _chooseLevelPanel.SetActive(false);
-            _skinPanel.SetActive(true);
+            Application.Quit();
         }
     }
 }

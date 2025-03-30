@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Player;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +45,8 @@ namespace Controllers
                 return;
             }
 
-            _playerInteractable.MaxGold -= skin.price;
+            _playerInteractable.SpendGold(skin.price);
+            _playerMovement.SetSpeedModifier(skin.speedModifier);
             skin.isPurchased = true;
             _spriteRenderer.sprite = skin.skinSprite;
             _text[index].text = ObtainedKey;

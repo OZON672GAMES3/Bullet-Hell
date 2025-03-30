@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Player
@@ -20,6 +21,9 @@ namespace Player
         private float _horizontal;
         private float _vertical;
         private float _speedModifier;
+        private float _slowMultiplier = 1f;
+
+        private bool _isSlowed;
 
         void Start()
         {
@@ -38,10 +42,35 @@ namespace Player
             _speedModifier = speedModifier;
         }
 
+        public void ApplySlow(float duration, float multiplier)
+        {
+            if (!_isSlowed)
+            {
+
+                _isSlowed = true;
+                _slowMultiplier = multiplier;
+                _speedModifier *= _slowMultiplier;
+                StartCoroutine(SlowRoutine(duration));
+            }
+            else
+            {
+                StopCoroutine(SlowRoutine(duration));
+                StartCoroutine(SlowRoutine(duration));
+            }
+        }
+
+        private IEnumerator SlowRoutine(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            _speedModifier /= _slowMultiplier;
+            _slowMultiplier = 1f;
+            _isSlowed = false;
+        }
+
         void Movement()
         {
-            float speed = _baseSpeed * _speedModifier;
-
+            float speed = _baseSpeed * _speedModifier * _slowMultiplier;
+            
             _horizontal = Input.GetAxisRaw(Horizontal) * speed * Time.deltaTime;
             _vertical = Input.GetAxisRaw(Vertical) * speed * Time.deltaTime;
 

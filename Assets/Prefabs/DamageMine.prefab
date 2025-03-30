@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 318241494195539280}
   - component: {fileID: -8381208020920154205}
   - component: {fileID: 2328050026830196550}
+  - component: {fileID: -1077719336622061780}
   m_Layer: 0
   m_Name: DamageMine
   m_TagString: DamageMine
@@ -133,3 +134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ca95f56456459eaf73d89039d307ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageValue: 1
+--- !u!114 &-1077719336622061780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063421371325852653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd997dcc06674ab8a1bddd66efa95b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: HullHit

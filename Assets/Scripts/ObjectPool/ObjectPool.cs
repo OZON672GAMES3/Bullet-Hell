@@ -8,32 +8,28 @@ namespace ObjectPool
     
         private readonly T _prefab;
         private readonly Queue<T> _pool = new Queue<T>();
+        private readonly Transform _parent;
 
-        public ObjectPool(T prefab, int initialSize)
+        public ObjectPool(T prefab, int initialSize, Transform parent = null)
         {
             _prefab = prefab;
+            _parent = parent;
 
             for (int i = 0; i < initialSize; i++)
             {
-                T obj = Object.Instantiate(_prefab);
+                T obj = Object.Instantiate(_prefab, parent);
                 obj.gameObject.SetActive(false);
                 _pool.Enqueue(obj);
             }
         }
 
-        public T Get()
+        public T Get(System.Action<T> onGet = null)
         {
-            if (_pool.Count > 0)
-            {
-                T obj = _pool.Dequeue();
-                obj.gameObject.SetActive(true);
-                return obj;
-            }
-            else
-            {
-                T obj = Object.Instantiate(_prefab);
-                return obj;
-            }
+            T obj = _pool.Count > 0 ? _pool.Dequeue() : Object.Instantiate(_prefab,_parent);
+            
+            obj.gameObject.SetActive(true);
+            onGet?.Invoke(obj);
+            return obj;
         }
 
         public void Release(T obj)

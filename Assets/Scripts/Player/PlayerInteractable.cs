@@ -16,10 +16,12 @@ namespace Player
         private static int _maxGold = 0;
         
         private HealthManager _healthManager;
+        private PlayerMovement _playerMovement;
         private ObjectPool<BonusGold> _bonusGoldPool;
         private ObjectPool<DamageMine> _damageMinePool;
         private ObjectPool<BonusHealthKit> _bonusHealthKitPool;
         private ObjectPool<BonusShield> _bonusShieldPool;
+        private ObjectPool<SlowMine> _slowMinePool;
         
         public int CurrentScore => _currentScore;
 
@@ -37,12 +39,17 @@ namespace Player
         public int MaxGold
         {
             get => PlayerPrefs.GetInt("MaxGold", _maxGold);
-            set
+            private set
             {
                 _maxGold = value;
                 PlayerPrefs.SetInt("MaxGold", _maxGold);
                 PlayerPrefs.Save();
             }
+        }
+
+        public void SpendGold(int gold)
+        {
+            MaxGold -= gold;
         }
 
         public void ResetScore()
@@ -52,7 +59,7 @@ namespace Player
 
         private void Awake()
         {
-            if (Instance == null)
+            if (!Instance)
                 Instance = this;
             else
                 Destroy(gameObject);
@@ -60,11 +67,13 @@ namespace Player
 
         void Start()
         {
+            _playerMovement = GetComponent<PlayerMovement>();
             _healthManager = FindObjectOfType<HealthManager>();
-            _bonusGoldPool = FindObjectOfType<GoldSpawner>()?.GetBonusGoldPool();
-            _damageMinePool = FindObjectOfType<MinesSpawner>()?.GetDamageMinePool();
-            _bonusHealthKitPool = FindObjectOfType<HealthSpawner>()?.GetBonusHealthKitPool();
-            _bonusShieldPool = FindObjectOfType<ShieldSpawner>()?.GetBonusShieldPool();
+            _bonusGoldPool = FindObjectOfType<GoldSpawner>()?.GetObjectPool();
+            _damageMinePool = FindObjectOfType<MinesSpawner>()?.GetObjectPool();
+            _bonusHealthKitPool = FindObjectOfType<HealthSpawner>()?.GetObjectPool();
+            _bonusShieldPool = FindObjectOfType<ShieldSpawner>()?.GetObjectPool();
+            _slowMinePool = FindObjectOfType<SlowMineSpawner>()?.GetObjectPool();
             
             _highScore = PlayerPrefs.GetInt("HighScore", 0);
             InvokeRepeating(nameof(AddScore), 10, 10);
@@ -105,6 +114,14 @@ namespace Player
             {
                 _healthManager.Invulnerable();
                 _bonusShieldPool.Release(bonusShield);
+            }
+
+            if (collider.gameObject.TryGetComponent(out SlowMine slowMine))
+            {
+                if (!_healthManager.IsInvulnerable())
+                    _playerMovement.ApplySlow(slowMine.SlowDuration, slowMine.SlowMultiplier);
+                
+                _slowMinePool.Release(slowMine);
             }
         }
 

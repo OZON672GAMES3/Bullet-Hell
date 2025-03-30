@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1014288431738854639}
   - component: {fileID: 252570783483900992}
-  - component: {fileID: 265444093904948650}
   - component: {fileID: 3183616398662192765}
+  - component: {fileID: 265444093904948650}
+  - component: {fileID: -986966099198123330}
   m_Layer: 0
   m_Name: BonusShield
   m_TagString: BonusShield
@@ -86,18 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &265444093904948650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3619513901974224054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eca081710604a6a94e5d3bafba9c5e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &3183616398662192765
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,3 +122,29 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &265444093904948650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619513901974224054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eca081710604a6a94e5d3bafba9c5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shieldDuration: 4
+--- !u!114 &-986966099198123330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619513901974224054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd997dcc06674ab8a1bddd66efa95b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: ShieldPickup

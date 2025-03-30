@@ -1,4 +1,6 @@
 using System.Collections;
+using Interactables.NegativeInteractables;
+using Interactables.PositiveInteractables;
 using Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,18 +10,27 @@ namespace UI
     public class HealthManager : MonoBehaviour
     {
         [SerializeField] private Image[] _lifeImage;
-        
+        [SerializeField] private DamageMine _damageMine;
+        [SerializeField] private BonusHealthKit _bonusHealthKit;
+        [SerializeField] private BonusShield _bonusShield;
+        [SerializeField] private SlowMine _slowMine;
+
         private int _maxLives = 3;
         private int _currentLives;
-        private bool _isInvulnerable;
-        private SpriteRenderer _spriteRenderer;
+
+        private float _invulnerableDuration;
         
+        private bool _isInvulnerable;
+
+        private SpriteRenderer _spriteRenderer;
+
         public int CurrentLives => _currentLives;
     
         void Start()
         {
-            _spriteRenderer = FindObjectOfType<PlayerInteractable>().GetComponent<SpriteRenderer>();
+            _spriteRenderer = PlayerInteractable.Instance.GetComponent<SpriteRenderer>();
             _currentLives = _maxLives;
+            _invulnerableDuration = _bonusShield.ShieldDuration;
             UpdateUI();
         }
     
@@ -27,7 +38,7 @@ namespace UI
         {
             if (_currentLives > 0)
             {
-                _currentLives--;
+                _currentLives -= _damageMine.DamageValue;
                 UpdateUI();
             }
         }
@@ -36,7 +47,7 @@ namespace UI
         {
             if (_currentLives < _maxLives)
             {
-                _currentLives++;
+                _currentLives += _bonusHealthKit.BonusHealth;
                 UpdateUI();
             }
         }
@@ -46,7 +57,7 @@ namespace UI
             if (!_isInvulnerable)
             {
                 _isInvulnerable = true;
-                StartCoroutine(InvulnerableCountdown());
+                StartCoroutine(InvulnerableCountdown(_invulnerableDuration));
             }
         }
     
@@ -61,10 +72,10 @@ namespace UI
                 _lifeImage[i].enabled = i < _currentLives;
         }
     
-        private IEnumerator InvulnerableCountdown()
+        private IEnumerator InvulnerableCountdown(float duration)
         {
             _spriteRenderer.color = Color.red;
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(duration);
             
             _spriteRenderer.color = Color.white;
             _isInvulnerable = false;
