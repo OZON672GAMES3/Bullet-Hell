@@ -20,7 +20,7 @@ namespace UI
 
         private float _invulnerableDuration;
         
-        private bool _isInvulnerable;
+        private bool _isInvulnerable = true;
 
         private SpriteRenderer _spriteRenderer;
 

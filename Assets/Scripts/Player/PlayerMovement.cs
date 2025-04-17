@@ -80,12 +80,12 @@ namespace Player
                 _vertical *= 0.5f;
             }
 
-            Vector3 newPosition = transform.position + new Vector3(_horizontal, _vertical, 0f);
+            Vector3 movementRect = transform.position + new Vector3(_horizontal, _vertical, 0f);
 
-            newPosition.x = Mathf.Clamp(newPosition.x, -2.7f, 3f);
-            newPosition.y = Mathf.Clamp(newPosition.y, -3.5f, 3.5f);
+            movementRect.x = Mathf.Clamp(movementRect.x, -2.7f, 3f);
+            movementRect.y = Mathf.Clamp(movementRect.y, -3.5f, 3.5f);
         
-            transform.position = newPosition;
+            transform.position = movementRect;
         }
     }
 }

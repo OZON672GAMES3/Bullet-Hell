@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4667784721933865530}
   - component: {fileID: 3965008073695173906}
   - component: {fileID: 2233266906463515980}
+  - component: {fileID: 323656669688248015}
   - component: {fileID: 5453812644715397470}
   - component: {fileID: 5508867552497134620}
   - component: {fileID: -156564003979070904}
-  - component: {fileID: -2113928341707507754}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -152,46 +152,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.032543197, y: -0.19154283}
   m_Size: {x: 1.6183206, y: 1.6183206}
   m_Direction: 0
---- !u!114 &5453812644715397470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783650268968350568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ebfd1391263b144598989685da3cf52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _baseSpeed: 2
---- !u!114 &5508867552497134620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783650268968350568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0c985fbf9d31e4cb5587f9a6ea4832, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-156564003979070904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783650268968350568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f504b399c3f64aebbca0ca36f53f8ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioSource: {fileID: -2113928341707507754}
-  _soundMapping: {fileID: 11400000, guid: 51eafa70e45b0914eab46b1943154889, type: 2}
---- !u!82 &-2113928341707507754
+--- !u!82 &323656669688248015
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,12 +161,12 @@ AudioSource:
   m_GameObject: {fileID: 783650268968350568}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7f158e1e0c0f09344b629b36e568e296, type: 3}
+  OutputAudioMixerGroup: {fileID: 4053099940161840658, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.436
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -287,3 +248,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5453812644715397470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783650268968350568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebfd1391263b144598989685da3cf52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseSpeed: 2
+--- !u!114 &5508867552497134620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783650268968350568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0c985fbf9d31e4cb5587f9a6ea4832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-156564003979070904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783650268968350568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f504b399c3f64aebbca0ca36f53f8ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundMapping: {fileID: 11400000, guid: 51eafa70e45b0914eab46b1943154889, type: 2}
+  _audioSource: {fileID: 323656669688248015}
+  _masterMixer: {fileID: 24300002, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
+  _sfxMixerGroup: {fileID: 4053099940161840658, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
+  _musicMixerGroup: {fileID: -9094721048162380162, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
+  _normal: {fileID: 24500006, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
+  _inMenu: {fileID: 2163817258028207373, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}

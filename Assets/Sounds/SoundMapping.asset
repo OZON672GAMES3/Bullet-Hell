@@ -15,13 +15,19 @@ MonoBehaviour:
   sounds:
   - identifier: HullHit
     clip: {fileID: 8300000, guid: 85fe8aedd53b7734b9ad29e3aae89666, type: 3}
+    audioMixerGroup: {fileID: 4053099940161840658, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
   - identifier: SlowEffect
     clip: {fileID: 8300000, guid: 8efa6de7ed7a7654dba342f3ad5eb76f, type: 3}
+    audioMixerGroup: {fileID: 4053099940161840658, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
   - identifier: CoinPickup
     clip: {fileID: 8300000, guid: c66c2fbdc346e33499fffd63f9da8bfc, type: 3}
+    audioMixerGroup: {fileID: 4053099940161840658, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
   - identifier: ShieldPickup
     clip: {fileID: 8300000, guid: d6e617b4d166cdb4b875b497d785274b, type: 3}
+    audioMixerGroup: {fileID: 4053099940161840658, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
   - identifier: HealthKitPickup
     clip: {fileID: 8300000, guid: 50fc33105c4c0b94fa0e6eb10f2f2873, type: 3}
+    audioMixerGroup: {fileID: 4053099940161840658, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
   - identifier: ShieldHit
     clip: {fileID: 8300000, guid: 1cb964a241c7383408333ead572f19e5, type: 3}
+    audioMixerGroup: {fileID: 4053099940161840658, guid: e2a18e897fedd924c8c59a734f1bb25d, type: 2}
